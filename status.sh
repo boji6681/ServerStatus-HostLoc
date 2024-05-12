@@ -323,8 +323,8 @@ Set_password(){
 	else
 		echo -e "请输入 ServerStatus 服务端中对应配置的密码[password]（字母/数字）"
 	fi
-	read -e -p "(默认: servers):" password_s
-	[[ -z "$password_s" ]] && password_s="servers"
+	read -e -p "(默认: 1):" password_s
+	[[ -z "$password_s" ]] && password_s="1"
 	echo && echo "	================================================"
 	echo -e "	密码[password]: ${Red_background_prefix} ${password_s} ${Font_color_suffix}"
 	echo "	================================================" && echo
@@ -347,8 +347,8 @@ Set_type(){
 }
 Set_location(){
 	echo -e "请输入 ServerStatus 服务端要设置的节点位置[location]（支持中文，前提是你的系统和SSH工具支持中文输入）"
-	read -e -p "(默认: Hong Kong):" location_s
-	[[ -z "$location_s" ]] && location_s="Hong Kong"
+	read -e -p "(默认: HK):" location_s
+	[[ -z "$location_s" ]] && location_s="HK"
 	echo && echo "	================================================"
 	echo -e "	节点位置[location]: ${Red_background_prefix} ${location_s} ${Font_color_suffix}"
 	echo "	================================================" && echo
