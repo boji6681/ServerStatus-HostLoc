@@ -46,11 +46,14 @@
 wget -N --no-check-certificate https://raw.githubusercontent.com/boji6681/ServerStatus-HostLoc/master/status.sh && chmod +x status.sh && ./status.sh
 ```
 下载脚本后，根据需要安装客户端或者服务端：
+
+### 显示客户端管理菜单
 ``` bash
-# 显示客户端管理菜单
 bash status.sh c
- 
-# 显示服务端管理菜单
+```
+
+### 显示服务端管理菜单
+```
 bash status.sh s
 ```
 运行脚本后会出现脚本操作菜单，选择并输入` 1 `就会开始安装。
@@ -75,11 +78,12 @@ bash status.sh s
 # 使用说明：
 
 进入下载脚本的目录并运行脚本：
-
+### 客户端管理菜单
 ``` bash
-# 客户端管理菜单
 ./status.sh c
-# 服务端管理菜单
+```
+### 服务端管理菜单
+```
 ./status.sh s
 ```
 
