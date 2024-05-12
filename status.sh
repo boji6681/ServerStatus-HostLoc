@@ -199,12 +199,12 @@ Write_server_config(){
 {"servers":
  [
   {
-   "username": "username01",
-   "password": "password",
-   "name": "Server 01",
+   "username": "user",
+   "password": "user",
+   "name": "Server01",
    "type": "KVM",
    "host": "",
-   "location": "Hong Kong",
+   "location": "HK",
    "disabled": false
   }
  ]
@@ -246,7 +246,7 @@ Set_server(){
 	[[ -z ${mode} ]] && mode="server"
 	if [[ ${mode} == "server" ]]; then
 		echo -e "请输入 ServerStatus 服务端中网站要设置的 域名[server]
-默认为本机IP为域名，例如输入: toyoo.pw ，如果要使用本机IP，请留空直接回车"
+默认为本机IP为域名，例如输入: google.com ，如果要使用本机IP，请留空直接回车"
 		read -e -p "(默认: 本机IP):" server_s
 		[[ -z "$server_s" ]] && server_s=""
 	else
@@ -263,8 +263,8 @@ Set_server_http_port(){
 	while true
 		do
 		echo -e "请输入 ServerStatus 服务端中网站要设置的 域名/IP的端口[1-65535]（如果是域名的话，一般用 80 端口）"
-		read -e -p "(默认: 8888):" server_http_port_s
-		[[ -z "$server_http_port_s" ]] && server_http_port_s="8888"
+		read -e -p "(默认: 80):" server_http_port_s
+		[[ -z "$server_http_port_s" ]] && server_http_port_s="80"
 		echo $((${server_http_port_s}+0)) &>/dev/null
 		if [[ $? -eq 0 ]]; then
 			if [[ ${server_http_port_s} -ge 1 ]] && [[ ${server_http_port_s} -le 65535 ]]; then
@@ -284,8 +284,8 @@ Set_server_port(){
 	while true
 		do
 		echo -e "请输入 ServerStatus 服务端监听的端口[1-65535]（用于服务端接收客户端消息的端口，客户端要填写这个端口）"
-		read -e -p "(默认: 35601):" server_port_s
-		[[ -z "$server_port_s" ]] && server_port_s="35601"
+		read -e -p "(默认: 11111):" server_port_s
+		[[ -z "$server_port_s" ]] && server_port_s="11111"
 		echo $((${server_port_s}+0)) &>/dev/null
 		if [[ $? -eq 0 ]]; then
 			if [[ ${server_port_s} -ge 1 ]] && [[ ${server_port_s} -le 65535 ]]; then
@@ -323,16 +323,16 @@ Set_password(){
 	else
 		echo -e "请输入 ServerStatus 服务端中对应配置的密码[password]（字母/数字）"
 	fi
-	read -e -p "(默认: doub.io):" password_s
-	[[ -z "$password_s" ]] && password_s="doub.io"
+	read -e -p "(默认: servers):" password_s
+	[[ -z "$password_s" ]] && password_s="servers"
 	echo && echo "	================================================"
 	echo -e "	密码[password]: ${Red_background_prefix} ${password_s} ${Font_color_suffix}"
 	echo "	================================================" && echo
 }
 Set_name(){
 	echo -e "请输入 ServerStatus 服务端要设置的节点名称[name]（支持中文，前提是你的系统和SSH工具支持中文输入，仅仅是个名字）"
-	read -e -p "(默认: Server 01):" name_s
-	[[ -z "$name_s" ]] && name_s="Server 01"
+	read -e -p "(默认: server01):" name_s
+	[[ -z "$name_s" ]] && name_s="server01"
 	echo && echo "	================================================"
 	echo -e "	节点名称[name]: ${Red_background_prefix} ${name_s} ${Font_color_suffix}"
 	echo "	================================================" && echo
@@ -637,7 +637,7 @@ Install_jq(){
 }
 Install_caddy(){
 	echo
-	echo -e "${Info} 是否由脚本自动配置HTTP服务(服务端的在线监控网站)，如果选择 N，则请在其他HTTP服务中配置网站根目录为：${Green_font_prefix}${web_file}${Font_color_suffix} [Y/n]"
+	echo -e "${Info} 选Y：可选域名或ip访问网站，如果选择 N，只能本机ip访问网站。网站根目录为：${Green_font_prefix}${web_file}${Font_color_suffix} [Y/n]"
 	read -e -p "(默认: Y 自动部署):" caddy_yn
 	[[ -z "$caddy_yn" ]] && caddy_yn="y"
 	if [[ "${caddy_yn}" == [Yy] ]]; then
