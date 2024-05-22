@@ -200,7 +200,7 @@ Write_server_config(){
  [
   {
    "username": "user",
-   "password": "user",
+   "password": "1",
    "name": "Server01",
    "type": "KVM",
    "host": "",
